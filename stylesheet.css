@@ -1,5 +1,5 @@
 :root {
-    --ff-main: sans-serif;
+    --ff-main: 'Be Vietnam Pro', sans-serif;
     --white: rgba(238, 234, 234, 0.884);
 
 }
@@ -26,6 +26,7 @@ body {
     -o-background-size: cover;
     background-size: cover;
     color: var(--white);
+    font-family: var(--ff-main);
 }
 
 .container {
@@ -37,4 +38,8 @@ body {
     text-align: center;
     align-items: center;
     justify-content: center;
+}
+
+.container__time {
+    font-size: 5rem;
 }

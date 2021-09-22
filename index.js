@@ -9,7 +9,11 @@ fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&que
     .then((data) => {
         console.log(data);
         body.style.backgroundImage = `url('${data.urls.full}')`;
+        if (data.user.bio) {
         photoCredit.textContent = `Photo by: ${data.user.name}. About ${data.user.name}: ${data.user.bio}`;
+        } else {
+            photoCredit.textContent = `Photo by: ${data.user.name}.`;
+        }
     })//data.urls.full); //data.user.name, data.user.portfolio_url, data.user.bio
 
 //build a clock
