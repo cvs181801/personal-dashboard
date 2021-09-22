@@ -35,11 +35,29 @@ body {
     grid-gap: 1em;
     grid-template-columns: repeat(3, .5fr);
     grid-template-rows: repeat(3, auto);
+    
+}
+
+.container__time {
+    font-size: 5rem;
     text-align: center;
     align-items: center;
     justify-content: center;
 }
 
-.container__time {
-    font-size: 5rem;
+.container__links {
+    text-align: left;
+    align-items: auto;
+    justify-content: auto;
+    padding: .5em;
+}
+
+.container__weather {
+    text-align: right;
+    vertical-align: text-top;
+    padding: .5em;
+}
+
+.photocredit {
+    padding: .5em;
 }
