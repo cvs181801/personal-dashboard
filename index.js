@@ -2,6 +2,10 @@
 const body = document.querySelector("body");
 const photoCredit = document.querySelector(".photocredit");
 const timeDiv = document.querySelector(".container__time");
+const cryptoDiv = document.querySelector(".container__crypto");
+const dogeCoinName = document.createElement("p");
+const dogeCoinThumb = document.createElement("img");
+const dogeCoinCurrentPrice = document.createElement("p");
 
 //this is scrimba's unsplash random image 'get ' link
 //get the image from the api and display it as background, along with the photographer
@@ -25,7 +29,24 @@ fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&que
         body.style.backgroundBlendMode = "multiply";
     });
     
-    //data.urls.full); //data.user.name, data.user.portfolio_url, data.user.bio
+//pull info on Dogecoin from the CoinGecko API
+
+fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
+    .then(response => response.json())
+    .then((data) => {console.log(data);
+        console.log(data.market_data.current_price.usd);
+           dogeCoinName.textContent = data.name;
+           dogeCoinThumb.src = data.image.thumb;
+           dogeCoinCurrentPrice.textContent = "$USD: " + data.market_data.current_price.usd.toFixed(2);
+           cryptoDiv.append(dogeCoinName);
+           cryptoDiv.append(dogeCoinThumb);
+           cryptoDiv.append(dogeCoinCurrentPrice);
+    })
+    .catch((error) => {
+        console.log(error);
+        dogeCoinName.textContent = "Crypto Currency Data Unavailable";
+        cryptoDiv.append(dogeCoinName);
+    })
 
 //build a clock
 //api for quote?
