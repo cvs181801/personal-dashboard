@@ -32,15 +32,21 @@ fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&que
 //pull info on Dogecoin from the CoinGecko API
 
 fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
-    .then(response => response.json())
-    .then((data) => {console.log(data);
+    .then((response) => {
+        if (!response.ok) {
+            throw Error ("Something went wrong")
+        } 
+           response.json()
+    .then((data) => {
+        console.log(data);
         console.log(data.market_data.current_price.usd);
-           dogeCoinName.textContent = data.name;
-           dogeCoinThumb.src = data.image.thumb;
-           dogeCoinCurrentPrice.textContent = "$USD: " + data.market_data.current_price.usd.toFixed(2);
-           cryptoDiv.append(dogeCoinName);
-           cryptoDiv.append(dogeCoinThumb);
-           cryptoDiv.append(dogeCoinCurrentPrice);
+        dogeCoinName.textContent = data.name;
+        dogeCoinThumb.src = data.image.thumb;
+        dogeCoinCurrentPrice.textContent = "$USD: " + data.market_data.current_price.usd.toFixed(2);
+        cryptoDiv.append(dogeCoinName);
+        cryptoDiv.append(dogeCoinThumb);
+        cryptoDiv.append(dogeCoinCurrentPrice);
+        })
     })
     .catch((error) => {
         console.log(error);
