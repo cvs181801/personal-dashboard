@@ -1,6 +1,23 @@
+:root {
+    --ff-main: sans-serif;
+
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
 body {
-    background-image: url(https://unsplash.com/photos/NRQV-hBF10M);
-    background-color: rgb(164, 213, 219);
-    background-blend-mode: multiply;
-    opacity: .8;
+    background-color: #A4D5DB;
+    background-image: url("/Users/casvalkyriespicer/Documents/GitHub/personal-dashboard/pics/landscape.jpeg"); 
+    background-blend-mode: multiply;  /*https://unsplash.com/photos/NRQV-hBF10M*/
+    opacity: 0.6;
+    width: 100%;
+    min-height: 100vh;
+    background-size: cover;
+    height: 40em;
+    margin: 0 auto;
 }
