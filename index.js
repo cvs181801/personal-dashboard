@@ -5,6 +5,8 @@ const timeDiv = document.querySelector(".container__time");
 const hourParagraph = document.createElement("p");
 const minuteParagraph = document.createElement("p");
 const secondParagraph = document.createElement("p");
+const amPmParagraph = document.createElement("p");
+amPmParagraph.style.padding = ".5em";
 const clockDisplayParagraph = document.createElement("p");
 const cryptoDiv = document.querySelector(".container__crypto");
 const dogeCoinName = document.createElement("p");
@@ -60,55 +62,66 @@ fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
 
 //build a clock/current time display feature!
 
-const pmTimes = {
-    13: 1,
-    14: 2,
-    15: 3,
-    16: 4,
-    17: 5,
-    18: 6,
-    19: 7,
-    20: 8,
-    21: 9,
-    22: 10,
-    23: 11
+const clock = new Date();
+console.log(clock);
+let hour = clock.getHours();
+let minute = clock.getMinutes();
+let second = clock.getSeconds();
+
+function determinAmOrPm(hour) {
+    if (hour >= 13) {
+        amPmParagraph.textContent = "PM";
+    } else {
+        amPmParagraph.textContent = "AM";
+    }
 }
 
-function renderClock() {
-    const clock = new Date();
-    console.log(clock);
-    const hour = clock.getHours();
-    const minute = clock.getMinutes();
-    const second = clock.getSeconds();
+function renderMinute(num) {
+    if (minute > 10) {
+        return `0${num}`; 
+    }  
+}  
+
+function renderSecond(num) {
+    if (second > 10) {
+        return `0${num}`;
+    }
+}
+
+function renderClock() {  
+    determinAmOrPm();
     if (hour >= 13) {
         switch(hour) {
-            case 13: hour = pmTimes[13];
+            case 13: hour = "1";   
                 break;
-            case 14: hour = pmTimes[14];
+            case 14: hour = "2"; 
                 break;    
-            case 15: hourParagraph.textContent = pmTimes[15];    
+            case 15: hour = "3";    
                 break;
-            case 16: hourParagraph.textContent = pmTimes[16];    
+            case 16: hour = "4";   
                 break;   
-            case 17: hourParagraph.textContent = pmTimes[17];    
+            case 17: hour = "5"; 
                 break;  
-            case 18: hourParagraph.textContent = pmTimes[18];    
+            case 18: hour = "6";   
                 break;  
-            case 19: hourParagraph.textContent = pmTimes[19];    
+            case 19: hour = "7";   
                 break;  
-            case 20: hourParagraph.textContent = pmTimes[20];    
+            case 20: hour = "8";    
                 break;  
-            case 21: hourParagraph.textContent = pmTimes[21];    
+            case 21: hour = "9";     
                 break;  
-            case 22: hourParagraph.textContent = pmTimes[22];    
+            case 22: hour = "10";     
                 break;    
-            case 23: hourParagraph.textContent = pmTimes[23];    
+            case 23: hour = "11";    
                 break;      
             }
         }
- 
+    
+    renderMinute(minute);
+    renderSecond(second);    
     clockDisplayParagraph.textContent = `${hour} : ${minute} : ${second}`;
     timeDiv.append(clockDisplayParagraph); 
+    timeDiv.append(amPmParagraph);
     }
 
 renderClock();
