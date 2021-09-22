@@ -18,8 +18,11 @@ fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&que
     })
     .catch( (error) => {
         console.log(error);
-        timeDiv.style.color = "rgb(24, 22, 22)";
         timeDiv.textContent = "I'm sorry, something went wrong. Please try again!"
+        timeDiv.style.fontSize = "2rem";
+        body.style.backgroundColor = "rgb(24, 22, 22)";
+        body.style.backgroundImage = "url('/Users/casvalkyriespicer/Documents/GitHub/personal-dashboard/pics/sademojis.jpg')";
+        body.style.backgroundBlendMode = "multiply";
     });
     
     //data.urls.full); //data.user.name, data.user.portfolio_url, data.user.bio
