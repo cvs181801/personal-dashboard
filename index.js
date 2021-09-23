@@ -1,6 +1,11 @@
 //get elements from the DOM
 const body = document.querySelector("body");
 const photoCredit = document.querySelector(".photocredit");
+const weatherDiv = document.querySelector(".container__weather");
+const weatherIcon = document.createElement("img");
+const weatherTemp = document.createElement("p");
+const weatherDescription = document.createElement("p");
+const weatherLocation = document.createElement("p");
 const timeDiv = document.querySelector(".container__time");
 const hourParagraph = document.createElement("p");
 const minuteParagraph = document.createElement("p");
@@ -80,10 +85,20 @@ let latitude;
 let longitude;
 
 function getWeatherAtPosition(lat, lon) {
-    fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${lat}&lon=${lon}&untis=imperial`)  //&units=${imperial}
+    fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial`)  //&units=${imperial}
         .then(response => response.json())
         .then((data) => {
             console.log(data);
+            console.log(data.main.temp, data.name);
+            console.log(data.weather[0].description, data.weather[0].icon);
+            weatherIcon.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+            weatherDiv.append(weatherIcon);
+            weatherLocation.textContent = data.name;
+            weatherDiv.append(weatherLocation);
+            weatherDescription.textContent = data.weather[0].description;
+            weatherDiv.append(weatherDescription);
+            weatherTemp.innerHTML = `temperature(&#8457): ${data.main.temp}`;
+            weatherDiv.append(weatherTemp);
             console.log(lat);
             console.log(lon);
         });
