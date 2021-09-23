@@ -39,7 +39,6 @@ body {
 }
 
 .container__time {
-    display: flex;
     font-size: 4rem;
     text-align: center;
     align-items: center;
@@ -59,6 +58,12 @@ body {
     padding: .5em;
 }
 
+.crypto__coinDescriptionP {
+    font-size: .7rem;
+}
+
 .photocredit {
     padding: .5em;
+    font-size: .7rem;
+    font-weight: 200;
 }

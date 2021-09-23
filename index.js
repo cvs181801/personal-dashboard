@@ -7,16 +7,14 @@ const weatherTemp = document.createElement("p");
 const weatherDescription = document.createElement("p");
 const weatherLocation = document.createElement("p");
 const timeDiv = document.querySelector(".container__time");
-const hourParagraph = document.createElement("p");
-const minuteParagraph = document.createElement("p");
-const secondParagraph = document.createElement("p");
-const amPmParagraph = document.createElement("p");
-amPmParagraph.style.padding = ".5em";
+const timeParagraph = document.querySelector(".time__paragraph");
 const clockDisplayParagraph = document.createElement("p");
 const cryptoDiv = document.querySelector(".container__crypto");
 const dogeCoinName = document.createElement("p");
 const dogeCoinThumb = document.createElement("img");
 const dogeCoinCurrentPrice = document.createElement("p");
+const dogeCoinDescription = document.querySelector(".crypto__coinDescriptionP");
+const fourthDiv = document.querySelector(".container__div4");
 
 //this is scrimba's unsplash random image 'get ' link
 //get the image from the api and display it as background, along with the photographer
@@ -57,6 +55,19 @@ fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
         cryptoDiv.append(dogeCoinName);
         cryptoDiv.append(dogeCoinThumb);
         cryptoDiv.append(dogeCoinCurrentPrice);
+
+            dogeCoinThumb.addEventListener("mouseover", function(e) {
+                e.preventDefault();
+                dogeCoinDescription.innerHTML = data.description.en;
+                fourthDiv.append(dogeCoinDescription);
+                console.log(data.description.en);
+                dogeCoinDescription.classList.remove("hidden");
+            })
+            dogeCoinThumb.addEventListener("mouseout", function(e){
+                e.preventDefault();
+                dogeCoinDescription.textContent = "";
+                dogeCoinDescription.classList.add("hidden");
+            })
         })
     })
     .catch((error) => {
@@ -72,7 +83,7 @@ let clock = new Date();
 function renderClock() {
     clock = new Date();
     clockDisplayParagraph.textContent = clock.toLocaleTimeString('en-US', {timeStyle: "short"});
-    timeDiv.append(clockDisplayParagraph);
+    timeDiv.insertBefore(clockDisplayParagraph, timeParagraph);
     }
 
 setInterval(renderClock, 1000);
@@ -116,8 +127,12 @@ function getLatLon() {
 getLatLon();
 
 
-
-
+//*** another solution for creating and rendering clock** */
+// const hourParagraph = document.createElement("p");
+// const minuteParagraph = document.createElement("p");
+// const secondParagraph = document.createElement("p");
+// const amPmParagraph = document.createElement("p");
+// amPmParagraph.style.padding = ".5em";
 
 // const clock = new Date();
 // console.log(clock);
