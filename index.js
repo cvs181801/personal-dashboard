@@ -75,6 +75,9 @@ setInterval(renderClock, 1000);
 //**For another clock solution scroll to bottom ***
 
 //weather api
+navigator.geolocation.getCurrentPosition((position) => {
+    console.log(position, position.coords.latitude, position.coords.longitude);
+})
 
 
 
