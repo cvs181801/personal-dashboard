@@ -72,7 +72,12 @@ function renderClock() {
 
 setInterval(renderClock, 1000);
 
-//Here is another solution...
+//**For another clock solution scroll to bottom ***
+
+//weather api
+
+
+
 
 // const clock = new Date();
 // console.log(clock);
@@ -137,7 +142,3 @@ setInterval(renderClock, 1000);
 //     }
 
 //renderClock();
-
-
-//api for quote?
-//weather api
