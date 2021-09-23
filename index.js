@@ -75,9 +75,31 @@ setInterval(renderClock, 1000);
 //**For another clock solution scroll to bottom ***
 
 //weather api
-navigator.geolocation.getCurrentPosition((position) => {
-    console.log(position, position.coords.latitude, position.coords.longitude);
-})
+
+let latitude;
+let longitude;
+
+function getWeatherAtPosition(lat, lon) {
+    fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${lat}&lon=${lon}&untis=imperial`)  //&units=${imperial}
+        .then(response => response.json())
+        .then((data) => {
+            console.log(data);
+            console.log(lat);
+            console.log(lon);
+        });
+}
+
+function getLatLon() {
+    navigator.geolocation.getCurrentPosition((position) => {
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+        console.log("latitude =" + latitude, "longitude =" + longitude);
+        return getWeatherAtPosition(latitude, longitude);
+    })
+}
+
+getLatLon();
+
 
 
 
