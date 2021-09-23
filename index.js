@@ -62,10 +62,15 @@ fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
 
 //build a clock/current time display feature!
 
-const clock = new Date();
+let clock = new Date();
 
-clockDisplayParagraph.textContent = clock.toLocaleTimeString('en-US');
-timeDiv.append(clockDisplayParagraph);
+function renderClock() {
+    clock = new Date();
+    clockDisplayParagraph.textContent = clock.toLocaleTimeString('en-US', {timeStyle: "short"});
+    timeDiv.append(clockDisplayParagraph);
+    }
+
+setInterval(renderClock, 1000);
 
 //Here is another solution...
 
