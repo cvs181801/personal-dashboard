@@ -63,68 +63,75 @@ fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
 //build a clock/current time display feature!
 
 const clock = new Date();
-console.log(clock);
-let hour = clock.getHours();
-let minute = clock.getMinutes();
-let second = clock.getSeconds();
 
-function determinAmOrPm(hour) {
-    if (hour >= 13) {
-        amPmParagraph.textContent = "PM";
-    } else {
-        amPmParagraph.textContent = "AM";
-    }
-}
+clockDisplayParagraph.textContent = clock.toLocaleTimeString('en-US');
+timeDiv.append(clockDisplayParagraph);
 
-function renderMinute(num) {
-    if (minute > 10) {
-        return `0${num}`; 
-    }  
-}  
+//Here is another solution...
 
-function renderSecond(num) {
-    if (second > 10) {
-        return `0${num}`;
-    }
-}
+// const clock = new Date();
+// console.log(clock);
+// let hour = clock.getHours();
+// let minute = clock.getMinutes();
+// let second = clock.getSeconds();
 
-function renderClock() {  
-    determinAmOrPm();
-    if (hour >= 13) {
-        switch(hour) {
-            case 13: hour = "1";   
-                break;
-            case 14: hour = "2"; 
-                break;    
-            case 15: hour = "3";    
-                break;
-            case 16: hour = "4";   
-                break;   
-            case 17: hour = "5"; 
-                break;  
-            case 18: hour = "6";   
-                break;  
-            case 19: hour = "7";   
-                break;  
-            case 20: hour = "8";    
-                break;  
-            case 21: hour = "9";     
-                break;  
-            case 22: hour = "10";     
-                break;    
-            case 23: hour = "11";    
-                break;      
-            }
-        }
+// function determinAmOrPm(hour) {
+//     if (hour >= 13) {
+//         amPmParagraph.textContent = "PM";
+//     } else {
+//         amPmParagraph.textContent = "AM";
+//     }
+// }
+
+// function renderMinute(num) {
+//     if (minute > 10) {
+//         return `0${num}`; 
+//     }  
+// }  
+
+// function renderSecond(num) {
+//     if (second > 10) {
+//         return `0${num}`;
+//     }
+// }
+
+ //function renderClock() {  
+//     determinAmOrPm();
+//     if (hour >= 13) {
+//         switch(hour) {
+//             case 13: hour = "1";   
+//                 break;
+//             case 14: hour = "2"; 
+//                 break;    
+//             case 15: hour = "3";    
+//                 break;
+//             case 16: hour = "4";   
+//                 break;   
+//             case 17: hour = "5"; 
+//                 break;  
+//             case 18: hour = "6";   
+//                 break;  
+//             case 19: hour = "7";   
+//                 break;  
+//             case 20: hour = "8";    
+//                 break;  
+//             case 21: hour = "9";     
+//                 break;  
+//             case 22: hour = "10";     
+//                 break;    
+//             case 23: hour = "11";    
+//                 break;      
+//             }
+        // }
     
-    renderMinute(minute);
-    renderSecond(second);    
-    clockDisplayParagraph.textContent = `${hour} : ${minute} : ${second}`;
-    timeDiv.append(clockDisplayParagraph); 
-    timeDiv.append(amPmParagraph);
-    }
+//     renderMinute(minute);
+//     renderSecond(second);    
+//     clockDisplayParagraph.textContent = `${hour} : ${minute} : ${second}`;
+//     timeDiv.append(clockDisplayParagraph); 
+//     timeDiv.append(amPmParagraph);
+//     }
 
-renderClock();
+//renderClock();
 
 
 //api for quote?
