@@ -60,12 +60,14 @@ fetch("https://api.coingecko.com/api/v3/coins/dogecoin")
                 e.preventDefault();
                 dogeCoinDescription.innerHTML = data.description.en;
                 fourthDiv.append(dogeCoinDescription);
+                //fourthDiv.style.transition = "all 1s ease-in-out";
                 console.log(data.description.en);
                 dogeCoinDescription.classList.remove("hidden");
             })
             dogeCoinThumb.addEventListener("mouseout", function(e){
                 e.preventDefault();
                 dogeCoinDescription.textContent = "";
+                //fourthDiv.style.transition = "all 1s ease-in-out";
                 dogeCoinDescription.classList.add("hidden");
             })
         })
