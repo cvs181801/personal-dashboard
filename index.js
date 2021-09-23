@@ -97,7 +97,11 @@ let longitude;
 
 function getWeatherAtPosition(lat, lon) {
     fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial`)  //&units=${imperial}
-        .then(response => response.json())
+        .then((response) => {
+            if (!response.ok) {
+                throw Error ("Something went wrong")
+            } 
+            response.json()
         .then((data) => {
             console.log(data);
             console.log(data.main.temp, data.name);
@@ -112,7 +116,14 @@ function getWeatherAtPosition(lat, lon) {
             weatherDiv.append(weatherTemp);
             console.log(lat);
             console.log(lon);
-        });
+        })
+    })
+
+    .catch((error) => {
+        console.log(error);
+        weatherDescription.textContent = "Weather Data Unavailable";
+        weatherDiv.append(weatherDescription);
+    })
 }
 
 function getLatLon() {
